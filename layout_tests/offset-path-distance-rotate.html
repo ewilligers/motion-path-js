@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<script src="../third_party/web-animations-js/web-animations.dev.js"></script>
+<script src="../motion-path-polyfill.min.js"></script>
+
+<style>
+
+#container {
+  position: absolute;
+  left: 50px;
+  top: 30px;
+  width: 700px;
+  height: 400px;
+  background-color: lightblue;
+}
+
+.placed {
+  position: absolute;
+  left: 220px;
+  top: 120px;
+  width: 200px;
+  height: 100px;
+}
+
+#expectation {
+  background-color: red;
+  transform: translate(-100px, 90px) rotate(110deg);
+}
+
+#target {
+  background-color: lime;
+}
+
+</style>
+
+<div id="container">
+  <div>
+    <div class="placed" id="expectation"></div>
+    <div class="placed" id="target"></div>
+  </div>
+</div>
+
+<script>
+'use strict';
+var keyframe = {
+  'offset-path': "path('m 100 50 h -200 v 100')",
+  'offset-distance': '240px',
+  'offset-rotate': 'auto 20deg'
+};
+target.animate([keyframe, keyframe], { duration: 0, fill: 'forwards' });
+</script>
