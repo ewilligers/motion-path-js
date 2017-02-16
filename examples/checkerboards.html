@@ -21,8 +21,8 @@
     background-color: blue;
     position: absolute;
     left: 300px;
-    width: 600px;
-    height: 600px;
+    width: 300px;
+    height: 300px;
     transform: scale(1);
   }
 
@@ -39,10 +39,10 @@
   'use strict';
 
   function setup() {
-    for (var side = 1; side <= 8; ++side) {
+    for (var side = 2; side <= 8; ++side) {
       var board = document.createElement('div');
       board.classList = 'board';
-      board.style.top = (side * 1200 - 900) + 'px';
+      board.style.top = (side * 600 - 400) + 'px';
 
 
       for (var right = 0; right < side; ++right) {
@@ -50,13 +50,10 @@
           var square = document.createElement('div');
           var parity = (side - right + side - bottom) % 2;
           square.classList = parity ? 'black square' : 'white square';
-          square.style.width = (600 / side) + 'px';
-          square.style.height = (600 / side) + 'px';
+          square.style.width = (300 / side) + 'px';
+          square.style.height = (300 / side) + 'px';
 
-          var position = '50% 50%';
-          if (side > 1) {
-            position = ((side - right - 1) * 100 / (side - 1)) + '% ' + ((side - bottom - 1) * 100 / (side - 1)) + '%';
-          }
+          var position = ((side - right - 1) * 100 / (side - 1)) + '% ' + ((side - bottom - 1) * 100 / (side - 1)) + '%';
 
           board.appendChild(square);
           square.animate([
